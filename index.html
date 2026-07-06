@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050505">
+<title>ALMEEL v0.7.3</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="splash" id="splash">
+  <img src="almeel-logo.jpeg">
+  <h1>ALMEEL</h1>
+  <p>v0.7.3 Final Stable</p>
+</div>
+
+<div class="app">
+<header>
+  <button id="installBtn">Install</button>
+  <div class="brand">
+    <div><b>ALMEEL</b><small>v0.7.3 Final Stable</small></div>
+    <img src="almeel-logo.jpeg">
+  </div>
+</header>
+
+<main>
+<section id="legacy" class="page active">
+  <div class="hero">
+    <p class="gold">BUILD YOUR LEGACY</p>
+    <h2>Welcome Back</h2>
+    <p>Stable base before v0.8.</p>
+    <button class="primary openBtn" data-target="calendar">Open Calendar</button>
+  </div>
+  <div class="grid">
+    <div class="stat"><b id="activeToday">0m</b><span>Active</span></div>
+    <div class="stat"><b id="spentToday">0 BD</b><span>Spent Today</span></div>
+    <div class="stat"><b id="remainingSalary">—</b><span>Remaining</span></div>
+    <div class="stat"><b id="waterCount">0/14</b><span>Water</span></div>
+  </div>
+  <div class="card"><h3>Today</h3><div id="todayList"></div></div>
+</section>
+
+<section id="calendar" class="page">
+  <h2>Calendar / Notes</h2>
+  <div class="card">
+    <input id="eventTitle" placeholder="العنوان: موعد مستشفى / تذكير / دوام">
+    <input id="eventDate" type="date">
+    <input id="eventTime" type="time">
+    <select id="eventType">
+      <option value="🏥">🏥 Hospital</option>
+      <option value="💼">💼 Work</option>
+      <option value="🐎">🐎 Horse</option>
+      <option value="🏋️">🏋️ Gym</option>
+      <option value="🚴">🚴 Cycling</option>
+      <option value="📌">📌 Reminder</option>
+      <option value="📝">📝 Note</option>
+    </select>
+    <textarea id="eventNotes" placeholder="Notes"></textarea>
+    <button class="primary" id="saveEvent">Save Event</button>
+  </div>
+  <div id="eventList"></div>
+</section>
+
+<section id="gym" class="page">
+  <h2>Gym Library</h2>
+  <input id="exerciseSearch" placeholder="Search exercise / muscle">
+  <div class="tabs">
+    <button class="muscleTab active" data-muscle="all">All</button>
+    <button class="muscleTab" data-muscle="Chest">Chest</button>
+    <button class="muscleTab" data-muscle="Back">Back</button>
+    <button class="muscleTab" data-muscle="Shoulders">Shoulders</button>
+    <button class="muscleTab" data-muscle="Biceps">Biceps</button>
+    <button class="muscleTab" data-muscle="Triceps">Triceps</button>
+    <button class="muscleTab" data-muscle="Legs">Legs</button>
+    <button class="muscleTab" data-muscle="Core">Core</button>
+  </div>
+  <div id="exerciseList" class="cards"></div>
+</section>
+
+<section id="exerciseDetail" class="page">
+  <button class="openBtn" data-target="gym">← Back</button>
+  <div id="exerciseDetailBox"></div>
+</section>
+
+<section id="quick" class="page">
+  <h2>Start Activity</h2>
+  <div class="quick-grid">
+    <button class="quick startBtn" data-type="gym">🏋️<b>Gym</b></button>
+    <button class="quick startBtn" data-type="horse">🐎<b>Horse</b></button>
+    <button class="quick startBtn" data-type="cycling">🚴<b>Cycling</b></button>
+    <button class="quick startBtn" data-type="diving">🤿<b>Diving</b></button>
+    <button class="quick startBtn" data-type="work">💼<b>Work</b></button>
+  </div>
+  <div id="activeBox" class="card hidden">
+    <span id="activeType">Activity</span>
+    <strong id="activeTimer">00:00:00</strong>
+    <button class="primary" id="finishActivity">Finish & Save</button>
+  </div>
+</section>
+
+<section id="activities" class="page">
+  <h2>Activities</h2>
+  <div id="activityList"></div>
+</section>
+
+<section id="wallet" class="page">
+  <h2>Wallet</h2>
+  <div class="grid">
+    <div class="stat"><b id="salaryView">—</b><span>Salary</span></div>
+    <div class="stat"><b id="remainingView">—</b><span>Remaining</span></div>
+    <div class="stat"><b id="monthSpentView">0 BD</b><span>This Month</span></div>
+  </div>
+  <div class="card">
+    <input id="salaryInput" type="number" step="0.001" placeholder="Salary مثال: 500">
+    <button class="primary" id="saveSalary">Save Salary</button>
+  </div>
+  <div class="card">
+    <input id="expenseTitle" placeholder="مصروف: قهوة / بنزين">
+    <input id="expenseAmount" type="number" step="0.001" placeholder="Amount BD">
+    <select id="expenseCategory">
+      <option>☕ Coffee</option><option>🍽 Food</option><option>⛽ Fuel</option><option>🐎 Horse</option><option>🏋️ Gym</option><option>🚗 Car</option><option>🏥 Medical</option><option>📌 Other</option>
+    </select>
+    <button class="primary" id="saveExpense">Add Expense</button>
+  </div>
+  <div id="expenseList"></div>
+</section>
+
+<section id="journal" class="page">
+  <h2>Journal</h2>
+  <div class="card">
+    <textarea id="journalText" placeholder="اكتب النوت"></textarea>
+    <button class="primary" id="saveJournal">Save Note</button>
+  </div>
+  <div id="journalList"></div>
+</section>
+
+<section id="water" class="page">
+  <h2>Water</h2>
+  <div class="card center">
+    <strong id="waterBig">0 / 14</strong>
+    <button id="minusWater">−</button>
+    <button id="plusWater">+</button>
+  </div>
+</section>
+</main>
+
+<nav>
+  <button class="nav active" data-page="legacy">Legacy</button>
+  <button class="nav" data-page="calendar">Calendar</button>
+  <button class="nav" data-page="gym">Gym</button>
+  <button class="nav" data-page="quick">Start</button>
+  <button class="nav" data-page="activities">Log</button>
+  <button class="nav" data-page="wallet">Wallet</button>
+  <button class="nav" data-page="journal">Journal</button>
+  <button class="nav" data-page="water">Water</button>
+</nav>
+</div>
+<script>
+window.ALMEEL_EXERCISES = [{"name": "Bench Press", "muscle": "Chest", "sets": "4 x 8-10", "tip": "Lower with control. Keep chest up and shoulders stable.", "icon": "🏋️"}, {"name": "Incline Dumbbell Press", "muscle": "Chest", "sets": "4 x 10", "tip": "Press up and slightly inward. Control the negative.", "icon": "💪"}, {"name": "Cable Fly", "muscle": "Chest", "sets": "3 x 12-15", "tip": "Soft elbows. Squeeze chest at the center.", "icon": "🪽"}, {"name": "Lat Pulldown", "muscle": "Back", "sets": "4 x 10", "tip": "Pull elbows down. Keep chest up.", "icon": "⬇️"}, {"name": "Seated Row", "muscle": "Back", "sets": "4 x 10-12", "tip": "Pull to lower ribs. Control the return.", "icon": "🚣"}, {"name": "Shoulder Press", "muscle": "Shoulders", "sets": "4 x 8-10", "tip": "Brace core. Press overhead smoothly.", "icon": "🏋️"}, {"name": "Lateral Raise", "muscle": "Shoulders", "sets": "4 x 12-15", "tip": "Lead with elbows. Avoid swinging.", "icon": "↔️"}, {"name": "Rear Delt Fly", "muscle": "Shoulders", "sets": "4 x 12-15", "tip": "Slow and controlled. Focus on rear delts.", "icon": "🪽"}, {"name": "Barbell Curl", "muscle": "Biceps", "sets": "4 x 10", "tip": "Keep elbows fixed. No swinging.", "icon": "💪"}, {"name": "Hammer Curl", "muscle": "Biceps", "sets": "3 x 12", "tip": "Neutral grip. Slow negative.", "icon": "🔨"}, {"name": "Triceps Pushdown", "muscle": "Triceps", "sets": "4 x 12", "tip": "Elbows close to ribs. Full extension.", "icon": "⬇️"}, {"name": "Squat", "muscle": "Legs", "sets": "4 x 8", "tip": "Chest tall. Drive through your whole foot.", "icon": "🦵"}, {"name": "Leg Press", "muscle": "Legs", "sets": "4 x 10", "tip": "Lower controlled. Don’t lock knees hard.", "icon": "🦿"}, {"name": "Romanian Deadlift", "muscle": "Legs", "sets": "4 x 8-10", "tip": "Hinge from hips. Keep back neutral.", "icon": "📐"}, {"name": "Plank", "muscle": "Core", "sets": "3 x 45-60s", "tip": "Body straight. Breathe.", "icon": "🧱"}];
+</script>
+<script src="app.js"></script>
+</body>
+</html>
