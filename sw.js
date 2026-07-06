@@ -1,0 +1,1 @@
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open('almeel-v08').then(c=>c.addAll(['./','index.html','styles.css','app.js','manifest.json','almeel-logo.jpeg'])))});self.addEventListener('activate',e=>{e.waitUntil(self.clients.claim())});self.addEventListener('fetch',e=>{e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)))})
